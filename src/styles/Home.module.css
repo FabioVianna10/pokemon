@@ -19,3 +19,10 @@
   flex-wrap: wrap;
   height: 0 auto;
 }
+
+.pokemonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

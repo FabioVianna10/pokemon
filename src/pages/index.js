@@ -1,7 +1,24 @@
-import styles from "../styles/Home.module.css"
+import Card from "@/components/Card";
+import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
+
 /*--------------------------------------------------------------------------------*/
+export const getStaticProps = async () => {
+  const maxPokemons = 251;
+  const api = "https://pokeapi.co/api/v2/pokemon";
+  const response = await fetch(`${api}/?limit=${maxPokemons}`);
+  const data = await response.json();
+  console.log(data);
+
+  const dataPokemons = data.results.map((pokemon, index) => ({
+    ...pokemon,
+    index: index + 1,
+  }));
+  return {
+    props: { dataPokemons },
+  };
+};
 
 /*export async function getStaticProps() {
   const maxPokemons = 251;
@@ -18,7 +35,7 @@ import Image from "next/image";
   };
 }*/
 
-const Home = ({ pokemons }) => {
+const Home = ({ dataPokemons }) => {
   return (
     <>
       <div className={styles.container}>
@@ -31,12 +48,13 @@ const Home = ({ pokemons }) => {
           height="50"
           alt="Imagem de uma Pokebola"
         />
-        </div>
+      </div>
 
-        <div className={styles.pokemonContainer}>
-          <p>testando</p>
-        </div>
-      
+      <div className={styles.pokemonContainer}>
+        {dataPokemons.map((pokemons) => {
+          return <Card key={pokemons.id}>name={pokemons.name}</Card>;
+        })}
+      </div>
     </>
   );
 };

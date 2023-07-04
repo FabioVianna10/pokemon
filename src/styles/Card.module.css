@@ -15,6 +15,11 @@
   box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.5);
   background-color: #333;
   color: #fff;
+  transition: ease 10ms;
+}
+
+.container:hover {
+  background-color: #3f3e3ec1;
 }
 
 .idPokemon {

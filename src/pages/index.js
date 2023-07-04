@@ -2,40 +2,41 @@ import Card from "@/components/Card";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
-
-/*--------------------------------------------------------------------------------*/
 export const getStaticProps = async () => {
-  const maxPokemons = 251;
+  const maxPokemons = 151;
   const api = "https://pokeapi.co/api/v2/pokemon";
   const response = await fetch(`${api}/?limit=${maxPokemons}`);
   const data = await response.json();
-  console.log(data);
 
   const dataPokemons = data.results.map((pokemon, index) => ({
     ...pokemon,
     index: index + 1,
   }));
+
+  let pokemonImageUrls = {};
+
+  try {
+    const fetchPokemonImages = dataPokemons.map(async (pokemon) => {
+      const pokemonResponse = await fetch(`${api}/${pokemon.index}`);
+      const pokemonData = await pokemonResponse.json();
+      const pokemonImageUrl = pokemonData.sprites.front_default;
+      pokemonImageUrls[pokemon.index] = pokemonImageUrl;
+    });
+
+    await Promise.all(fetchPokemonImages);
+  } catch (error) {
+    console.log("Erro ao obter as URLs das imagens dos Pokémon:", error);
+  }
+
   return {
-    props: { dataPokemons },
+    props: {
+      dataPokemons,
+      pokemonImageUrls,
+    },
   };
 };
 
-/*export async function getStaticProps() {
-  const maxPokemons = 251;
-  const api = "https://pokeapi.co/api/v2/pokemon";
-  const response = await fetch(`${api}/?limit=${maxPokemons}`);
-  const data = await response.json();
-  const pokemons = data.results.map((pokemon, index) => ({
-    ...pokemon,
-    index: index + 1,
-  }));
-
-  return {
-    props: { pokemons },
-  };
-}*/
-
-const Home = ({ dataPokemons }) => {
+const Home = ({ dataPokemons, pokemonImageUrls }) => {
   return (
     <>
       <div className={styles.container}>
@@ -51,9 +52,14 @@ const Home = ({ dataPokemons }) => {
       </div>
 
       <div className={styles.pokemonContainer}>
-        {dataPokemons.map((pokemons) => {
-          return <Card key={pokemons.id}>name={pokemons.name}</Card>;
-        })}
+        {dataPokemons.map((pokemon) => (
+          <Card
+            key={pokemon.index}
+            imagem={pokemonImageUrls[pokemon.index]}
+            pokemon={pokemon.name}
+            id={`# ${pokemon.index}`}
+          />
+        ))}
       </div>
     </>
   );

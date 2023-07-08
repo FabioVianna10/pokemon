@@ -8,10 +8,10 @@ import styles from "../styles/Card.module.css";
     console.log(res)
 } */
 
-const Card = ({ pokemon, imagem, id }) => {
+const Card = ({ pokemon, imagem }) => {
   return (
     <div className={styles.container}>
-      <p className={styles.idPokemon}>{id}</p>
+      <p className={styles.idPokemon}>{pokemon.index}</p>
       <Image
         className={styles.imgPokemon}
         src={imagem}
@@ -21,8 +21,8 @@ const Card = ({ pokemon, imagem, id }) => {
       ></Image>
 
       <div className={styles.containerInfo}>
-        <h1 className={styles.title}>{pokemon}</h1>
-        <Link href="/about" className={styles.details}>
+        <h1 className={styles.title}>{pokemon.name}</h1>
+        <Link href={`/pokemon/${pokemon.index}`} className={styles.details}>
           Detalhes
         </Link>
       </div>

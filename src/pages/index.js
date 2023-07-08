@@ -56,8 +56,7 @@ const Home = ({ dataPokemons, pokemonImageUrls }) => {
           <Card
             key={pokemon.index}
             imagem={pokemonImageUrls[pokemon.index]}
-            pokemon={pokemon.name}
-            id={`# ${pokemon.index}`}
+            pokemon={pokemon}
           />
         ))}
       </div>

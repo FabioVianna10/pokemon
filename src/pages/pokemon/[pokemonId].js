@@ -46,11 +46,17 @@ const Pokemon = ({ pokemon }) => {
         <h3 className={styles.subtitle}>Numero:</h3>
         <p>{`# ${pokemon.id}`}</p>
 
-        <div className={styles.typeContainer}>
+        <div className={styles.boxTypeContainer}>
           <h3 className={styles.subtitle}>Tipo:</h3>
-          <div className={styles.spanContainer}>
+
+          <div className={styles.typeContainer}>
             {pokemon.types.map((item, index) => (
-              <span key={index}>{item.type.name}</span>
+              <span
+                key={index}
+                className={`${styles.type} ${styles["type_" + item.type.name]}`}
+              >
+                {item.type.name}
+              </span>
             ))}
           </div>
         </div>

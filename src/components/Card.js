@@ -11,7 +11,7 @@ import styles from "../styles/Card.module.css";
 const Card = ({ pokemon, imagem }) => {
   return (
     <div className={styles.container}>
-      <p className={styles.idPokemon}>{pokemon.index}</p>
+      <p className={styles.idPokemon}>{`# ${pokemon.index}`}</p>
       <Image
         className={styles.imgPokemon}
         src={imagem}

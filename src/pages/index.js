@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
 export const getStaticProps = async () => {
-  const maxPokemons = 151;
+  const maxPokemons = 300;
   const api = "https://pokeapi.co/api/v2/pokemon";
   const response = await fetch(`${api}/?limit=${maxPokemons}`);
   const data = await response.json();

@@ -2,19 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Card.module.css";
 
-/*export const getPokemonInfo = async ({pokemons}) => {
-    const res = await fetch(`https://pokeapi.glitch.me/vi/pokemon/${pokemons}`) 
-    return res.json()
-    console.log(res)
-} */
-
-const Card = ({ pokemon, imagem }) => {
+const Card = ({ pokemon, image }) => {
   return (
     <div className={styles.container}>
       <p className={styles.idPokemon}>{`# ${pokemon.index}`}</p>
       <Image
         className={styles.imgPokemon}
-        src={imagem}
+        src={image}
         width="200"
         height="220"
         alt=" imagem de um pokemon"

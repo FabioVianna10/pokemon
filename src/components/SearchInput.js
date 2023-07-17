@@ -1,6 +1,16 @@
 import styles from "../styles/SearchInput.module.css";
 import Image from "next/image";
+import { useState } from "react";
+
 const SearchInput = () => {
+  const [search, setSearch] = useState([]);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+
+    console.log(search);
+  };
+
   return (
     <div className={styles.container}>
       <Image
@@ -11,8 +21,10 @@ const SearchInput = () => {
         alt="Icone de uma lupa"
       />
       <input
+        value={search}
         className={styles.search}
         placeholder="Escolha seu Pokemon!"
+        onChange={handleSearch}
       ></input>
     </div>
   );

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Card.module.css";
 
-
 const Card = ({ pokemon, imagem }) => {
   return (
     <div className={styles.container}>
@@ -24,6 +23,5 @@ const Card = ({ pokemon, imagem }) => {
     </div>
   );
 };
-
 
 export default Card;

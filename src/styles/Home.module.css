@@ -18,6 +18,7 @@
   justify-content: center;
   flex-wrap: wrap;
   height: 0 auto;
+  margin-top: -2rem;
 }
 
 .pokemonContainer {
@@ -25,4 +26,21 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.searchContainer {
+  padding: 10px 10px;
+  border: 2px solid #a3a1a1;
+  box-shadow: 1px 1px #333;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search {
+  padding: 10px 10px;
+  border: none;
+  outline: none;
+  width: 500px;
 }

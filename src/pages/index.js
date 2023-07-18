@@ -1,6 +1,7 @@
 import Card from "@/components/Card";
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
+import { useState } from "react";
 
 export const getStaticProps = async () => {
   const maxPokemons = 300;
@@ -37,22 +38,41 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ dataPokemons, pokemonImageUrls }) => {
+  const [filterPokemons, setFilterPokemons] = useState("");
+
+  const handleSearch = (e) => {
+    setFilterPokemons(e.target.value);
+  };
+  const searchLowercase = filterPokemons.toLowerCase();
+  const allPokemons = dataPokemons;
+
+  const filteredPokemons = allPokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchLowercase)
+  );
+  console.log(filteredPokemons);
+
   return (
     <>
       <div className={styles.container}>
-        <h1 className={styles.title}>
-          Poke<span></span>Next
-        </h1>
-        <Image
-          src="/assets/pokeball.png"
-          width="50"
-          height="50"
-          alt="Imagem de uma Pokebola"
-        />
+        <div className={styles.searchContainer}>
+          <Image
+            className={styles.img}
+            src="/assets/lupa.png"
+            width="20"
+            height="20"
+            alt="Icone de uma lupa"
+          />
+          <input
+            value={filterPokemons}
+            className={styles.search}
+            onChange={handleSearch}
+            placeholder="Escolha seu Pokemon!"
+          />
+        </div>
       </div>
 
       <div className={styles.pokemonContainer}>
-        {dataPokemons.map((pokemon) => (
+        {filteredPokemons.map((pokemon) => (
           <Card
             key={pokemon.index}
             imagem={pokemonImageUrls[pokemon.index]}

@@ -9,6 +9,8 @@ Cada Pokémon é representado em um card, que exibe sua imagem, número de ident
 
 
 Imagem do Projeto:
+
+
 ![image](https://github.com/FabioVianna10/pokemon/assets/88548832/75fd53d0-93c5-4191-89ab-25c5d147b0b7)
 
 

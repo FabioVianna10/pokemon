@@ -7,25 +7,19 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.divLogo}>
         <Image
-          src="/assets/pokeball.png"
-          width="50"
-          height="50"
-          alt="Lo imagem de uma pokebola"
+          src="/assets/logo.png"
+          width="200"
+          height="85"
+          alt="Logo do site escrito Pokemon"
         ></Image>
-        <h1 className={styles.logo}>PokeNext</h1>
       </div>
 
-      <div>
-        <ul className={styles.containerList}>
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-        </ul>
-      </div>
+      <Image
+        src="/assets/pokeball.png"
+        width="50"
+        height="50"
+        alt="Lo imagem de uma pokebola"
+      ></Image>
     </nav>
   );
 };

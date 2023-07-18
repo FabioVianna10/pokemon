@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 export const getStaticProps = async () => {
-  const maxPokemons = 300;
+  const maxPokemons = 151;
   const api = "https://pokeapi.co/api/v2/pokemon";
   const response = await fetch(`${api}/?limit=${maxPokemons}`);
   const data = await response.json();
@@ -62,6 +62,7 @@ const Home = ({ dataPokemons, pokemonImageUrls }) => {
             height="20"
             alt="Icone de uma lupa"
           />
+          
           <input
             value={filterPokemons}
             className={styles.search}

@@ -10,3 +10,9 @@
   color: #fff;
   text-align: center;
 }
+
+@media (max-width: 767px) {
+  .containerFooter {
+    width: 470px;
+  }
+}

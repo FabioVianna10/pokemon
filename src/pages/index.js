@@ -62,7 +62,7 @@ const Home = ({ dataPokemons, pokemonImageUrls }) => {
             height="20"
             alt="Icone de uma lupa"
           />
-          
+
           <input
             value={filterPokemons}
             className={styles.search}

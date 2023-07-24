@@ -36,7 +36,7 @@ const Pokemon = ({ pokemon }) => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{pokemon.name}</h1>
-      <Image
+      <Image className={styles.img}
         src={imageUrl}
         width="200"
         height="220"

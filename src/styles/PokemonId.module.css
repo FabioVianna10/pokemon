@@ -134,3 +134,16 @@
 .info p {
   font-size: 1.2rem;
 }
+
+@media (max-width: 767px) {
+  .title {
+    width: 80%;
+    margin-left: auto;
+  }
+  .img {
+    margin-left: 5rem;
+  }
+  .DescriptionContainer {
+    margin-left: 5rem;
+  }
+}

@@ -14,5 +14,7 @@
 @media (max-width: 767px) {
   .containerFooter {
     width: 470px;
+    height: 202px;
+    
   }
 }
